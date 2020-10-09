@@ -12,6 +12,12 @@ class Location:
     def get_zone(self) -> Zone:
         return self._zone
 
+    def __str__(self) -> str:
+        return self._name
+
+    def __repr__(self) -> str:
+        return str(self)
+
 # subclass of location
 class Building(Location):
     pass
