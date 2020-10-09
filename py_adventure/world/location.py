@@ -2,7 +2,7 @@ from .zone import Zone
 
 class Location:
 
-    def __init__(self, name :str, zone : Zone):
+    def __init__(self, name :str, zone : Zone) -> None:
         self._name = name
         self._zone = zone
 
