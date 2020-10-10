@@ -1,10 +1,13 @@
 from py_adventure import ZoneConnection
-from py_adventure import City, Zone
+from py_adventure import City, Zone, Location, Building
 from py_adventure import World
 
 from typing import Dict, List
 
-city1 : Zone = City("Baldur's Gate")
+
+inn : Location = Building("Lion's Rest Inn")
+
+city1 : Zone = City("Baldur's Gate", [inn])
 city2 : Zone = City("Elturel")
 
 road1 : Zone = Zone("Fields of the Dead")
@@ -23,10 +26,16 @@ connections : Dict[Zone, List[ZoneConnection]] = {
     city2 : [connection4]
 }
 
+
 world : World = World("Faerun", city1, connections)
 print(world.get_name())
 
 print(world.get_current_zone())
+
+current_zone : Zone = world.get_current_zone()
+
+for loc in current_zone.get_locations():
+    print(loc)
 
 print(world.get_available_exits())
 
