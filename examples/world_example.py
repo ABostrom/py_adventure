@@ -1,3 +1,4 @@
+from py_adventure import PointOfInterest
 from py_adventure import ZoneConnection
 from py_adventure import City, Zone, Location, Building
 from py_adventure import World
@@ -5,8 +6,11 @@ from py_adventure import World
 from typing import Dict, List
 
 
+
+barrel : PointOfInterest = PointOfInterest("Barrel")
+
 gate : Location = Location("City Gate")
-inn : Location = Building("Lion's Rest Inn")
+inn : Location = Building("Lion's Rest Inn", [barrel])
 
 city1 : Zone = City("Baldur's Gate", [gate,inn])
 city2 : Zone = City("Elturel")
@@ -29,20 +33,31 @@ connections : Dict[Zone, List[ZoneConnection]] = {
 
 
 world : World = World("Faerun", city1, connections)
-print(world.get_name())
-
-print(world.get_current_zone())
 
 current_zone : Zone = world.get_current_zone()
-
+print(f"You arrive at {current_zone}")
+print(f"Where would you like to explore?")
 for loc in current_zone.get_locations():
     print(loc)
 
-print(world.get_available_exits())
+print("Or you can leave via:")
+for connection in world.get_available_exits():
+    print(connection)
+
+print("--------------------------------")
+
+#go to the lions rest inn.
+current_location : Location = current_zone.get_locations()[1]
+print(f"You arrive at the {current_location.get_name()}")
+
+print("Looking around you notice:")
+for poi in current_location.get_points_of_interest():
+    print(poi.get_name())
+
+print(f"or you can leave to go back to {current_zone}")
 
 
 
 
-print(world.__dict__)
 
 

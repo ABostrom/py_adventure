@@ -8,7 +8,7 @@ class ZoneConnection:
         self._zone = zone
 
     def __str__(self) -> str:
-        return f"Take the {self._name } to get to {self._zone.get_name()}"
+        return f"{self._name } to {self._zone.get_name()}"
 
     def __repr__(self) -> str:
         return str(self)

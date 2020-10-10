@@ -18,6 +18,9 @@ class Location:
     def get_zone(self) -> 'zone.Zone':
         return self._zone
 
+    def get_points_of_interest(self) -> List[PointOfInterest]:
+        return self._points
+
     def __str__(self) -> str:
         return self._name
 
