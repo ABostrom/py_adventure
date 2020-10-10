@@ -5,6 +5,9 @@ from py_adventure import World
 from typing import Dict, List
 
 
+
+
+
 inn : Location = Building("Lion's Rest Inn")
 
 city1 : Zone = City("Baldur's Gate", [inn])

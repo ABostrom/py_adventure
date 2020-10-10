@@ -1,4 +1,4 @@
-from py_adventure.world import location
+from . import location
 from typing import List, Optional
 
 class Zone:

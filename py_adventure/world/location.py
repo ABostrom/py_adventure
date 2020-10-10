@@ -1,6 +1,4 @@
-from py_adventure.world import zone
-
-
+from . import zone
 from .poi import PointOfInterest
 from typing import List
 
