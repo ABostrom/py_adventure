@@ -21,8 +21,6 @@ class Location:
     def __str__(self) -> str:
         return self._name
 
-    def __repr__(self) -> str:
-        return str(self)
 
 # subclass of location
 

@@ -5,12 +5,10 @@ from py_adventure import World
 from typing import Dict, List
 
 
-
-
-
+gate : Location = Location("City Gate")
 inn : Location = Building("Lion's Rest Inn")
 
-city1 : Zone = City("Baldur's Gate", [inn])
+city1 : Zone = City("Baldur's Gate", [gate,inn])
 city2 : Zone = City("Elturel")
 
 road1 : Zone = Zone("Fields of the Dead")
@@ -43,5 +41,8 @@ for loc in current_zone.get_locations():
 print(world.get_available_exits())
 
 
+
+
+print(world.__dict__)
 
 
