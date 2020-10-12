@@ -16,3 +16,7 @@ class ItemPoI(PointOfInterest):
 
 class NPCPoI(PointOfInterest):
     pass
+
+
+class Door(PointOfInterest):
+    pass

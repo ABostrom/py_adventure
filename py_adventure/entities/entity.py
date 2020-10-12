@@ -9,13 +9,12 @@ class Entity:
     entity_naming : ClassVar[Counter[str]] = Counter()
 
     def __init__(self, name) -> None:
-        self._name = name 
+        self._name : str = name 
         Entity.entity_naming.update([name])
         count = Entity.entity_naming[name]       
         if count > 1:
             self._name+= str(count-1)
 
-        print(self._name)
         # add the entity to the entities map.
         Entity.entities[self._name] = self
 
@@ -24,5 +23,3 @@ class Entity:
 
     def __del__(self) -> None:
         del Entity.entities[self._name]
-
-        print("bye" + self._name)
