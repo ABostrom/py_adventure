@@ -1,5 +1,4 @@
 from __future__ import annotations
-from py_adventure.world.connection import ZoneConnection
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from .zone import Zone
@@ -55,14 +54,13 @@ class Location(CommandReceiver):
 
 
 # subclass of location
-
 class ZoneConnectionLocation(Location):
-    def __init__(self, name: str, id : str, description : str, connection: ZoneConnection):
+    def __init__(self, name: str, id : str, description : str, zone: Zone):
         super().__init__(name, id, description)
-        self._connection = connection
+        self._zone = zone
 
     def get_zone(self) -> Zone:
-        return self._connection._zone
+        return self._zone
 
 
 class Building(Location):

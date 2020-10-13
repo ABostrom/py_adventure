@@ -4,6 +4,7 @@ if TYPE_CHECKING:
     from .world import *
 
 from .io import CommandLineInterface
+from .world.location import ZoneConnectionLocation
 
 class GameManager():
 
@@ -19,7 +20,13 @@ class GameManager():
         self._current_zone = next_zone
 
     def change_location(self, next_location: Location):
-        self._current_location = next_location
+        #if we're a zone connection location, rather than going to the location
+        #go to the zone we point at. 
+        #TODO: use polymorphism. Code smell
+        if isinstance(next_location, ZoneConnectionLocation):
+            self.change_zone(next_location.get_zone())
+        else:
+            self._current_location = next_location
 
     def run(self):
 
