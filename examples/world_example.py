@@ -1,7 +1,7 @@
 from py_adventure import PointOfInterest
 from py_adventure import ZoneConnection
 from py_adventure import City, Zone, Location, Building
-from py_adventure import World
+from py_adventure import Region
 
 from typing import Dict, List
 
@@ -32,7 +32,7 @@ connections : Dict[Zone, List[ZoneConnection]] = {
 }
 
 
-world : World = World("Faerun", city1, connections)
+world : Region = Region("Faerun", city1, connections)
 
 current_zone : Zone = world.get_current_zone()
 print(f"You arrive at {current_zone}")

@@ -1,11 +1,18 @@
-from . import location
-from typing import List, Optional
+from __future__ import annotations
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
+    from .location import Location
+    from typing import Dict, List
+    from ..game_manager import GameManager
 
-class Zone:
+from ..entities import CommandReceiver
 
-    def __init__(self, name :str, locations :List['location.Location'] = []) -> None:
+class Zone(CommandReceiver):
+
+    def __init__(self, name :str, id :str, locations :List[Location] = []) -> None:
         self._name = name
         self._locations = locations
+        self._id = id
 
         #assign each location to this zone
         for loc in self._locations:
@@ -14,14 +21,32 @@ class Zone:
     def get_name(self) -> str:
         return self._name
 
-    def get_locations(self) -> List['location.Location']:
+    def get_id(self) -> str:
+        return self._id
+
+    def get_locations(self) -> List[Location]:
         return self._locations
 
     def __str__(self) -> str:
-        return self._name
+        return f"{self._name} ({self._id})"
 
     def __repr__(self) -> str:
         return str(self)
+
+    def receive_command(self, command: str, args: Dict[str, str], gm: GameManager) -> bool:
+        if command == "goto":
+            #match the argument to 
+            for loc in self.get_locations():
+                if loc.get_id() == args["parameters"]:
+                    gm.change_location(loc)
+                    return True
+
+        return False
+
+    def get_valid_commands(self) -> List[str]:
+        return ["goto"]
+
+
 
 #subclasses of Zone. City and Forest.
 class City (Zone):

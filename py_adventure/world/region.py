@@ -1,10 +1,11 @@
+from __future__ import annotations
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
+    from .zone import Zone
+    from .connection import ZoneConnection
+    from typing import Dict, List
 
-#__all__ = ["World"]
-from .zone import Zone
-from .connection import ZoneConnection
-from typing import Dict, List
-
-class World:
+class Region:
     
     def __init__(self, name :str, starting_zone: Zone, zones : Dict[Zone, List[ZoneConnection]]) -> None:
         self._name = name
@@ -19,7 +20,6 @@ class World:
 
     def get_available_exits(self) -> List[ZoneConnection]:
         return self._zones[self._current_zone]
-
 
     def __str__(self) -> str:
         return self._name

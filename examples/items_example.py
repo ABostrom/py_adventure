@@ -10,3 +10,6 @@ print(sword.get_description())
 
 key : Item = Item("Big Key", 2, quest_item=True, unique=True)
 
+
+
+door : Door = Door("Big Oak Door", )
